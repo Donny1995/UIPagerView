@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PagerView'
-  s.version          = '0.1.0'
+  s.version          = '1.0.0'
   s.summary          = 'A short description of PagerView.'
 
 # This description is used to generate tags and improve search results.
@@ -28,15 +28,10 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Donny1995/PagerView.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-
+  s.swift_version = '5.0'
+  s.ios.deployment_target = '11.0'
   s.source_files = 'PagerView/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'PagerView' => ['PagerView/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
+  s.frameworks = 'UIKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

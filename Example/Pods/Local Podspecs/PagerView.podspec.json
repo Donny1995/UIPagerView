@@ -1,0 +1,25 @@
+{
+  "name": "PagerView",
+  "version": "1.0.0",
+  "summary": "A short description of PagerView.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Donny1995/PagerView",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Donny1995": "sanny199955@mail.ru"
+  },
+  "source": {
+    "git": "https://github.com/Donny1995/PagerView.git",
+    "tag": "1.0.0"
+  },
+  "swift_versions": "5.0",
+  "platforms": {
+    "ios": "11.0"
+  },
+  "source_files": "PagerView/Classes/**/*",
+  "frameworks": "UIKit",
+  "swift_version": "5.0"
+}

@@ -1,0 +1,16 @@
+PODS:
+  - PagerView (1.0.0)
+
+DEPENDENCIES:
+  - PagerView (from `../`)
+
+EXTERNAL SOURCES:
+  PagerView:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  PagerView: b273ecb135d9ea3641cbe89a743ff85079e04673
+
+PODFILE CHECKSUM: f9855f4f3d26f468892b449dc68adfbb2e612d88
+
+COCOAPODS: 1.12.1
