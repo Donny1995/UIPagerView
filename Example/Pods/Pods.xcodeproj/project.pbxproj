@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0AA14F8756F1756294DF83EB2032E051 /* MagicScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AE49D6E159F3E8274260D6CE00D9C /* MagicScrollView.swift */; };
+		0AA14F8756F1756294DF83EB2032E051 /* ExtendedIntaractionAreaScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845AE49D6E159F3E8274260D6CE00D9C /* ExtendedIntaractionAreaScrollView.swift */; };
 		1370D29DBEEFB374B692631094622487 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */; };
 		2B6D93791DC76EF18FD500A68ADCD6D2 /* PagerView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C266F3A86EDE4E18D33AE68889845815 /* PagerView-dummy.m */; };
 		3F2F5B2CA9456E9AE3D9943D43729684 /* Pods-PagerView_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6228FF8319E285041C84B4BCB204653E /* Pods-PagerView_Example-dummy.m */; };
@@ -41,18 +41,18 @@
 		6D214D67BE70699BDAB609A47B0BE2FD /* Pods-PagerView_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PagerView_Example-frameworks.sh"; sourceTree = "<group>"; };
 		7769DD62732AEDDFEE522122D317C994 /* PagerView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PagerView-prefix.pch"; sourceTree = "<group>"; };
 		7F5C2C65DD1C27915523FB355914295E /* PagerView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = PagerView.debug.xcconfig; sourceTree = "<group>"; };
-		81D11259C1AD6BD90921AC73C4EE6132 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
-		845AE49D6E159F3E8274260D6CE00D9C /* MagicScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MagicScrollView.swift; path = PagerView/Classes/MagicScrollView.swift; sourceTree = "<group>"; };
+		81D11259C1AD6BD90921AC73C4EE6132 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		845AE49D6E159F3E8274260D6CE00D9C /* ExtendedIntaractionAreaScrollView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExtendedIntaractionAreaScrollView.swift; path = PagerView/Classes/ExtendedIntaractionAreaScrollView.swift; sourceTree = "<group>"; };
 		9583A06A59D0AA49ACA1873CCBB5153E /* PagerView-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "PagerView-Info.plist"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		B041F46F996E9A98801B9C8577750BD3 /* PagerView.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PagerView.modulemap; sourceTree = "<group>"; };
 		BDDC9DB52E12E4CCE4A3E910FCC24BB1 /* Pods-PagerView_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-PagerView_Example.modulemap"; sourceTree = "<group>"; };
-		C24F187AB491CC4098A1B44C5E461FA0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		C24F187AB491CC4098A1B44C5E461FA0 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		C266F3A86EDE4E18D33AE68889845815 /* PagerView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "PagerView-dummy.m"; sourceTree = "<group>"; };
 		CAE828AE25140291F1B9D39D9833082D /* Pods-PagerView_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-PagerView_Example-Info.plist"; sourceTree = "<group>"; };
 		D245E0514AAC1A2B9A6D5EA2F383E90F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		D710643AFF644CE77643237433131760 /* UIPagerView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = UIPagerView.swift; path = PagerView/Classes/UIPagerView.swift; sourceTree = "<group>"; };
-		DAB267D57A30733410CD2CD639914BE0 /* PagerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = PagerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		DAB267D57A30733410CD2CD639914BE0 /* PagerView.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = PagerView.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DAB705B1526667B12AB390F0DF09C5D0 /* RandomAccessCollection + Range.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "RandomAccessCollection + Range.swift"; path = "PagerView/Classes/RandomAccessCollection + Range.swift"; sourceTree = "<group>"; };
 		E8BF6D87B7EDB017F4EB96DC1881151E /* Pods-PagerView_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-PagerView_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EAB6F611E86A4758835A715E4B4184F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -111,7 +111,7 @@
 		28207300294D4BDC7F977A87E91C6EB1 /* PagerView */ = {
 			isa = PBXGroup;
 			children = (
-				845AE49D6E159F3E8274260D6CE00D9C /* MagicScrollView.swift */,
+				845AE49D6E159F3E8274260D6CE00D9C /* ExtendedIntaractionAreaScrollView.swift */,
 				DAB705B1526667B12AB390F0DF09C5D0 /* RandomAccessCollection + Range.swift */,
 				D710643AFF644CE77643237433131760 /* UIPagerView.swift */,
 				47B3F992FE74FD9AD3B1FB5EABC144BA /* UIPagerViewItem.swift */,
@@ -308,7 +308,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AA14F8756F1756294DF83EB2032E051 /* MagicScrollView.swift in Sources */,
+				0AA14F8756F1756294DF83EB2032E051 /* ExtendedIntaractionAreaScrollView.swift in Sources */,
 				2B6D93791DC76EF18FD500A68ADCD6D2 /* PagerView-dummy.m in Sources */,
 				9B2F6905CCE113186766F974E1B650EB /* RandomAccessCollection + Range.swift in Sources */,
 				EB0A8C7C092C21C94622E2C6356D376D /* UIPagerView.swift in Sources */,
@@ -548,8 +548,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

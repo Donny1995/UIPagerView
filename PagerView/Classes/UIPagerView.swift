@@ -36,13 +36,13 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     }
     
     public let scrollView: UIScrollView
-    internal var scrollViewConstraints = [NSLayoutConstraint]()
+    public var scrollViewConstraints = [NSLayoutConstraint]()
     private var contentSizeConstraint: NSLayoutConstraint?
     let feedbackGenerator = UISelectionFeedbackGenerator()
     
     public init(axis: Axis, frame: CGRect) {
         self.axis = axis
-        self.scrollView = MagicScrollView(
+        self.scrollView = ExtendedIntaractionAreaScrollView(
             axis: axis.toNsLayoutAxis,
             frame: .init(origin: .zero, size: frame.size)
         )
@@ -133,7 +133,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     }
     
     ///Возвращяет максимально возможное видимое количество элементов слева и справа от центрального
-    func getCurrentVisibleIndexesBounds() -> (before: Int, after: Int) {
+    open func getCurrentVisibleIndexesBounds() -> (before: Int, after: Int) {
         let range: Int
         
         var numberOfElements = floor(bounds.size[keyPath: sizeKeyPath] / pageFrame(for: 0).size[keyPath: sizeKeyPath]) + 2

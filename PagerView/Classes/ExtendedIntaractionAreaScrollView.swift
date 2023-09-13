@@ -1,5 +1,5 @@
 //
-//  MagicScrollView.swift
+//  ExtendedIntaractionAreaScrollView.swift
 //  UIComponents
 //
 //  Created by Alexandr Sivash on 15.08.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class MagicScrollView: UIScrollView {
+class ExtendedIntaractionAreaScrollView: UIScrollView {
     
     let axis: NSLayoutConstraint.Axis
     init(axis: NSLayoutConstraint.Axis, frame: CGRect) {
