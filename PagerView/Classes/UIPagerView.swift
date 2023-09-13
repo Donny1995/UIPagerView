@@ -113,7 +113,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - 📦 Managing views
-    var managedViews: [UIPagerViewItem] = []
+    public internal(set) var managedViews: [UIPagerViewItem] = []
     public func reloadData(selectedIndex: Int? = nil) {
         passiveReuseCache.removeAll()
         
@@ -124,7 +124,8 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         setSelected(index: selectedIndex ?? self.selectedIndex, animated: false)
     }
     
-    func view(for index: Int) -> (view: UIPagerViewItem, index: Int)? {
+    ///Возвращает вью и его индекс в managedViews, если оно там есть
+    public func view(for index: Int) -> (view: UIPagerViewItem, index: Int)? {
         guard let index = managedViews.firstIndex(where: { $0.index == index }) else {
             return nil
         }
@@ -141,7 +142,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         return (range, range)
     }
     
-    private var currentNumberOfElements: Int = 0
+    public internal(set) var currentNumberOfElements: Int = 0
     open private(set) var selectedIndex: Int = 0 {
         didSet {
             guard selectedIndex != oldValue else {
@@ -384,6 +385,14 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         positionViews(forIndex: newCalculatedSelectedIndex)
         selectedIndex = newCalculatedSelectedIndex
         feedbackGenerator.selectionChanged()
+    }
+    
+    //MARK: - 📦 Zooming
+    public func scrollViewDidZoom(_ scrollView: UIScrollView) { }
+    public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) { }
+    public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) { }
+    public func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return nil
     }
     
     //MARK: - 📦 Dynamic updates
