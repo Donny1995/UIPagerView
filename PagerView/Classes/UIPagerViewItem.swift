@@ -9,7 +9,8 @@ import UIKit
 
 open class UIPagerViewItem: UIView {
     var cacheName: String?
-    var index: Int = -1
+    ///Индекс, с которым этот айтем был призван на экран, если применимо
+    public internal(set) var index: Int = -1
     
     required public override init(frame: CGRect) {
         super.init(frame: frame)
