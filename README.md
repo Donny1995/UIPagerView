@@ -1,6 +1,6 @@
 # PagerView
-This is an implementation of UIPagerView
-UIScrollView subclass
+This is an implementation of UIPagerView.
+  + uses UIScrollView
   + centered element with paging snapping
   + supports infinite elements dequeue
   + supports dynamic(and batch) inserts, removes and moves like UITableView
