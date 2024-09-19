@@ -34,3 +34,8 @@ Carthage/Build
 # `pod install` in .travis.yml
 #
 # Pods/
+/Example/PagerView.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+/archives
+xcshareddata
+*.xcframework
+*.xcworkspacedata

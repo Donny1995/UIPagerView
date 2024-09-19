@@ -137,7 +137,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     open func getCurrentVisibleIndexesBounds() -> (before: Int, after: Int) {
         let range: Int
         
-        var numberOfElements = floor(bounds.size[keyPath: sizeKeyPath] / pageFrame(for: 0).size[keyPath: sizeKeyPath]) + 2
+        var numberOfElements = ceil(bounds.size[keyPath: sizeKeyPath] / pageFrame(for: 0).size[keyPath: sizeKeyPath]) + 2
         range = max(1, Int((numberOfElements - 1) / 2.0))
         return (range, range)
     }

@@ -37,6 +37,7 @@ public final class ViewController: UIViewController {
         pager.datasource = self
         pager.reloadData()
         
+        //To see over bounds
         //pager.scrollView.layer.transform = CATransform3DMakeScale(0.45, 0.45, 1.0)
         //pager.scrollView.clipsToBounds = false
         //pager.scrollView.layer.masksToBounds = false
