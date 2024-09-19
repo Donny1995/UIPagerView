@@ -2,9 +2,16 @@
 This is an implementation of UIPagerView
 UIScrollView subclass
   + centered element with paging snapping
-  + supports infinite dequing of elements 
+  + supports infinite elements dequeue
   + supports dynamic(and batch) inserts, removes and moves like UITableView
   + supports horizontal and vertical alignment with no cahnges to datasource or delegate logic.
+
+
+
+
+https://github.com/user-attachments/assets/4991f8e3-5574-4e4a-9f93-d1d73c73b253
+
+
 
 ## Example
 
