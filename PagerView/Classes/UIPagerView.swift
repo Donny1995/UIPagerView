@@ -38,7 +38,9 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     public let scrollView: UIScrollView
     public var scrollViewConstraints = [NSLayoutConstraint]()
     private var contentSizeConstraint: NSLayoutConstraint?
-    let feedbackGenerator = UISelectionFeedbackGenerator()
+    
+    public var isFeedbackGeneratorEnabled: Bool = true
+    public let feedbackGenerator = UISelectionFeedbackGenerator()
     
     public init(axis: Axis, frame: CGRect) {
         self.axis = axis
@@ -403,12 +405,17 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
             newCalculatedSelectedIndex = Int(round(offset / pageSize))
         }
         
-        feedbackGenerator.prepare()
+        if isFeedbackGeneratorEnabled {
+            feedbackGenerator.prepare()
+        }
+        
         
         guard selectedIndex != newCalculatedSelectedIndex else { return }
         positionViews(forIndex: newCalculatedSelectedIndex)
         selectedIndex = newCalculatedSelectedIndex
-        feedbackGenerator.selectionChanged()
+        if isFeedbackGeneratorEnabled {
+            feedbackGenerator.selectionChanged()
+        }
     }
     
     //MARK: - 📦 Zooming
