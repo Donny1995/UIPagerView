@@ -70,9 +70,19 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator = false
         
+        scrollViewDelegateObsevationToken = scrollView.observe(\.delegate) { [weak self] scrollView, _ in
+            guard let self else { return }
+            setBoundsSubscription(enabled: self.scrollView.delegate !== self)
+        }
+        
         addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         adjustScrollViewFrame(scaleFactor: middleItemScaleFactor)
+    }
+    
+    deinit {
+        scrollViewBoundsObsevationToken?.invalidate()
+        scrollViewDelegateObsevationToken?.invalidate()
     }
     
     required public init?(coder: NSCoder) {
@@ -354,6 +364,20 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
     }
     
     //MARK: - 📦 ScrollView Delegate
+    
+    private var scrollViewDelegateObsevationToken: NSKeyValueObservation?
+    private var scrollViewBoundsObsevationToken: NSKeyValueObservation?
+    
+    func setBoundsSubscription(enabled: Bool) {
+        scrollViewBoundsObsevationToken?.invalidate()
+        guard enabled else { return }
+        
+        scrollViewBoundsObsevationToken = scrollView.observe(\.bounds) { [weak self] scrollView, _ in
+            guard let self else { return }
+            self.scrollViewDidScroll(scrollView)
+        }
+    }
+    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offset: CGFloat
