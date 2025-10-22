@@ -35,6 +35,14 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         case outOfBounds
     }
     
+    /// Scroll view, that handles everything
+    /// > Tip: you can set scrollView.delegate to whatever you like but don't forget to define delegate methods to disable zoom
+    /// > ```swift
+    /// >   public func scrollViewDidZoom(_ scrollView: UIScrollView) { }
+    /// >   public func scrollViewWillBeginZooming(_ scrollView: UIScrollView, with view: UIView?) { }
+    /// >   public func scrollViewDidEndZooming(_ scrollView: UIScrollView, with view: UIView?, atScale scale: CGFloat) { }
+    /// >   public func viewForZooming(in scrollView: UIScrollView) -> UIView? { return nil }
+    /// > ```
     public let scrollView: UIScrollView
     public var scrollViewConstraints = [NSLayoutConstraint]()
     private var contentSizeConstraint: NSLayoutConstraint?

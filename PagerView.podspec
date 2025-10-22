@@ -8,8 +8,8 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PagerView'
-  s.version          = '1.0.4'
-  s.summary          = 'A short description of PagerView.'
+  s.version          = '1.0.5'
+  s.summary          = 'PagerView based on UIScrollView paging mechanic, with elements reuse and batch updates.'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -31,5 +31,4 @@ TODO: Add long description of the pod here.
   s.source_files = 'PagerView/Classes/**/*'
   
   s.frameworks = 'UIKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
