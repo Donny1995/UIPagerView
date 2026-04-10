@@ -30,7 +30,7 @@ open class UIPagerViewItem: UIView {
 open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     
     //MARK: - ❐ Variables
-    public lazy var mViewContent: T = createContentView()
+    public private(set) lazy var mViewContent: T = createContentView()
     
     private var layoutIsPrepared: Bool = false
     private var contentTopConstraint: NSLayoutConstraint?
@@ -47,7 +47,7 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     }
     
     open func createContentView() -> T {
-        return T.init(frame: bounds)
+        return T.init(frame: bounds.inset(by: contentInset))
     }
     
     private func prepareLayoutIfNeeded() {
