@@ -65,6 +65,11 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
         layoutIsPrepared = true
     }
     
+    override func layoutSubviews() {
+        prepareLayoutIfNeeded()
+        super.layoutSubviews()
+    }
+    
     override open func updateConstraints() {
         prepareLayoutIfNeeded()
         contentTopConstraint?.constant =  contentInset.top
