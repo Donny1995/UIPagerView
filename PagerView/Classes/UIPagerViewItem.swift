@@ -61,6 +61,11 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
         contentLeadingConstraint = mViewContent.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInset.left)
         contentTrailingConstraint = mViewContent.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInset.right)
         contentBottomConstraint = mViewContent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -contentInset.bottom)
+     
+        contentTopConstraint?.isActive = true
+        contentLeadingConstraint?.isActive = true
+        contentTrailingConstraint?.isActive = true
+        contentBottomConstraint?.isActive = true
         
         layoutIsPrepared = true
     }
