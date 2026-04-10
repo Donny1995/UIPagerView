@@ -32,6 +32,7 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     //MARK: - ❐ Variables
     public lazy var mViewContent: T = createContentView()
     
+    private var layoutIsPrepared: Bool = false
     private var contentTopConstraint: NSLayoutConstraint?
     private var contentLeadingConstraint: NSLayoutConstraint?
     private var contentTrailingConstraint: NSLayoutConstraint?
@@ -46,20 +47,26 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     }
     
     open func createContentView() -> T {
-        let view = T.init(frame: bounds)
+        return T.init(frame: bounds)
+    }
+    
+    private func prepareLayoutIfNeeded() {
+        guard !layoutIsPrepared else {
+            return
+        }
         
-        view.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(view)
-        contentTopConstraint = view.topAnchor.constraint(equalTo: self.topAnchor, constant: contentInset.top)
-        contentLeadingConstraint = view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: contentInset.left)
-        contentTrailingConstraint = view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -contentInset.right)
-        contentBottomConstraint = view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -contentInset.bottom)
+        mViewContent.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(mViewContent)
+        contentTopConstraint = mViewContent.topAnchor.constraint(equalTo: topAnchor, constant: contentInset.top)
+        contentLeadingConstraint = mViewContent.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInset.left)
+        contentTrailingConstraint = mViewContent.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInset.right)
+        contentBottomConstraint = mViewContent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -contentInset.bottom)
         
-        return view
+        layoutIsPrepared = true
     }
     
     override open func updateConstraints() {
-        _ = mViewContent
+        prepareLayoutIfNeeded()
         contentTopConstraint?.constant =  contentInset.top
         contentLeadingConstraint?.constant =  contentInset.left
         contentTrailingConstraint?.constant = -contentInset.right
