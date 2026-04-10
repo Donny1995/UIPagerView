@@ -30,59 +30,40 @@ open class UIPagerViewItem: UIView {
 open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     
     //MARK: - ❐ Variables
-    public required init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+    public lazy var mViewContent: T = createContentView()
     
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var contentTopConstraint: NSLayoutConstraint?
+    private var contentLeadingConstraint: NSLayoutConstraint?
+    private var contentTrailingConstraint: NSLayoutConstraint?
+    private var contentBottomConstraint: NSLayoutConstraint?
     
     open var contentInset: UIEdgeInsets = .zero {
         didSet {
-            guard contentInset != oldValue else { return }
-            _ = mViewContent
-            contentTopConstraint?.constant =  contentInset.top
-            contentLeadingConstraint?.constant =  contentInset.left
-            contentTrailingConstraint?.constant = -contentInset.right
-            contentBottomConstraint?.constant = -contentInset.bottom
-            setNeedsLayout()
+            if contentInset != oldValue {
+                setNeedsUpdateConstraints()
+            }
         }
     }
     
-    var contentTopConstraint: NSLayoutConstraint?
-    var contentLeadingConstraint: NSLayoutConstraint?
-    var contentTrailingConstraint: NSLayoutConstraint?
-    var contentBottomConstraint: NSLayoutConstraint?
-    
-    public lazy var mViewContent: T = { [unowned self] in
+    open func createContentView() -> T {
         let view = T.init(frame: bounds)
+        
         view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        setNeedsUpdateConstraints()
+        self.addSubview(view)
+        contentTopConstraint = view.topAnchor.constraint(equalTo: self.topAnchor, constant: contentInset.top)
+        contentLeadingConstraint = view.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: contentInset.left)
+        contentTrailingConstraint = view.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -contentInset.right)
+        contentBottomConstraint = view.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -contentInset.bottom)
+        
         return view
-    }()
+    }
     
     override open func updateConstraints() {
-        NSLayoutConstraint.deactivate([
-            contentTopConstraint,
-            contentLeadingConstraint,
-            contentTrailingConstraint,
-            contentBottomConstraint,
-        ].compactMap({ $0 }))
-        
-        contentTopConstraint = mViewContent.topAnchor.constraint(equalTo: mViewContent.superview!.topAnchor, constant: contentInset.top)
-        contentLeadingConstraint = mViewContent.leadingAnchor.constraint(equalTo: mViewContent.superview!.leadingAnchor, constant: contentInset.left)
-        contentTrailingConstraint = mViewContent.trailingAnchor.constraint(equalTo: mViewContent.superview!.trailingAnchor, constant: -contentInset.right)
-        contentBottomConstraint = mViewContent.bottomAnchor.constraint(equalTo: mViewContent.superview!.bottomAnchor, constant: -contentInset.bottom)
-        
-        NSLayoutConstraint.activate([
-            contentTopConstraint,
-            contentLeadingConstraint,
-            contentTrailingConstraint,
-            contentBottomConstraint,
-        ].compactMap({ $0 }))
-        
+        _ = mViewContent
+        contentTopConstraint?.constant =  contentInset.top
+        contentLeadingConstraint?.constant =  contentInset.left
+        contentTrailingConstraint?.constant = -contentInset.right
+        contentBottomConstraint?.constant = -contentInset.bottom
         super.updateConstraints()
     }
 }
