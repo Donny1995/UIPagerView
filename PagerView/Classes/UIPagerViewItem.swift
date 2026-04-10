@@ -65,7 +65,7 @@ open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
         layoutIsPrepared = true
     }
     
-    override func layoutSubviews() {
+    override open func layoutSubviews() {
         prepareLayoutIfNeeded()
         super.layoutSubviews()
     }
