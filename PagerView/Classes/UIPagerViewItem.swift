@@ -30,59 +30,57 @@ open class UIPagerViewItem: UIView {
 open class GenericUIPagerViewItem<T: UIView>: UIPagerViewItem {
     
     //MARK: - ❐ Variables
-    public required init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+    public private(set) lazy var mViewContent: T = createContentView()
     
-    required public init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var layoutIsPrepared: Bool = false
+    private var contentTopConstraint: NSLayoutConstraint?
+    private var contentLeadingConstraint: NSLayoutConstraint?
+    private var contentTrailingConstraint: NSLayoutConstraint?
+    private var contentBottomConstraint: NSLayoutConstraint?
     
     open var contentInset: UIEdgeInsets = .zero {
         didSet {
-            guard contentInset != oldValue else { return }
-            _ = mViewContent
-            contentTopConstraint?.constant =  contentInset.top
-            contentLeadingConstraint?.constant =  contentInset.left
-            contentTrailingConstraint?.constant = -contentInset.right
-            contentBottomConstraint?.constant = -contentInset.bottom
-            setNeedsLayout()
+            if contentInset != oldValue {
+                setNeedsUpdateConstraints()
+            }
         }
     }
     
-    var contentTopConstraint: NSLayoutConstraint?
-    var contentLeadingConstraint: NSLayoutConstraint?
-    var contentTrailingConstraint: NSLayoutConstraint?
-    var contentBottomConstraint: NSLayoutConstraint?
+    open func createContentView() -> T {
+        return T.init(frame: bounds.inset(by: contentInset))
+    }
     
-    public lazy var mViewContent: T = { [unowned self] in
-        let view = T.init(frame: bounds)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-        setNeedsUpdateConstraints()
-        return view
-    }()
+    private func prepareLayoutIfNeeded() {
+        guard !layoutIsPrepared else {
+            return
+        }
+        
+        mViewContent.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(mViewContent)
+        contentTopConstraint = mViewContent.topAnchor.constraint(equalTo: topAnchor, constant: contentInset.top)
+        contentLeadingConstraint = mViewContent.leadingAnchor.constraint(equalTo: leadingAnchor, constant: contentInset.left)
+        contentTrailingConstraint = mViewContent.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -contentInset.right)
+        contentBottomConstraint = mViewContent.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -contentInset.bottom)
+     
+        contentTopConstraint?.isActive = true
+        contentLeadingConstraint?.isActive = true
+        contentTrailingConstraint?.isActive = true
+        contentBottomConstraint?.isActive = true
+        
+        layoutIsPrepared = true
+    }
+    
+    override open func layoutSubviews() {
+        prepareLayoutIfNeeded()
+        super.layoutSubviews()
+    }
     
     override open func updateConstraints() {
-        NSLayoutConstraint.deactivate([
-            contentTopConstraint,
-            contentLeadingConstraint,
-            contentTrailingConstraint,
-            contentBottomConstraint,
-        ].compactMap({ $0 }))
-        
-        contentTopConstraint = mViewContent.topAnchor.constraint(equalTo: mViewContent.superview!.topAnchor, constant: contentInset.top)
-        contentLeadingConstraint = mViewContent.leadingAnchor.constraint(equalTo: mViewContent.superview!.leadingAnchor, constant: contentInset.left)
-        contentTrailingConstraint = mViewContent.trailingAnchor.constraint(equalTo: mViewContent.superview!.trailingAnchor, constant: -contentInset.right)
-        contentBottomConstraint = mViewContent.bottomAnchor.constraint(equalTo: mViewContent.superview!.bottomAnchor, constant: -contentInset.bottom)
-        
-        NSLayoutConstraint.activate([
-            contentTopConstraint,
-            contentLeadingConstraint,
-            contentTrailingConstraint,
-            contentBottomConstraint,
-        ].compactMap({ $0 }))
-        
+        prepareLayoutIfNeeded()
+        contentTopConstraint?.constant =  contentInset.top
+        contentLeadingConstraint?.constant =  contentInset.left
+        contentTrailingConstraint?.constant = -contentInset.right
+        contentBottomConstraint?.constant = -contentInset.bottom
         super.updateConstraints()
     }
 }

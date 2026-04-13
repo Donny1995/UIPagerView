@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PagerView'
-  s.version          = '1.0.5'
+  s.version          = '1.0.7'
   s.summary          = 'PagerView based on UIScrollView paging mechanic, with elements reuse and batch updates.'
 
 # This description is used to generate tags and improve search results.
