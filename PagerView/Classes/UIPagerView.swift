@@ -139,7 +139,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         
         let numberOfElements = datasource?.pagerView(numberOfElementsInt: self) ?? 0
         adjustContentSize(number: numberOfElements)
-        positionViews(forIndex: selectedIndex ?? self.selectedIndex)
+        positionViews(forIndex: selectedIndex ?? self.selectedIndex, forceReload: true)
         
         setSelected(index: selectedIndex ?? self.selectedIndex, animated: false)
     }
@@ -237,7 +237,7 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         NSLayoutConstraint.activate(newConstraints)
     }
     
-    func positionViews(forIndex: Int, itemPositioning: ItemPositioning? = .none) {
+    func positionViews(forIndex: Int, forceReload: Bool = false, itemPositioning: ItemPositioning? = .none) {
         
         layoutIfNeeded()
         guard bounds.size[keyPath: sizeKeyPath] > 0 else {
@@ -247,6 +247,12 @@ open class UIPagerView: UIView, UIScrollViewDelegate {
         let visibleBounds = getCurrentVisibleIndexesBounds()
         guard currentNumberOfElements > 0, let visibleRange = (0..<currentNumberOfElements).range(around: forIndex, leftDistance: visibleBounds.before, rightDistance: visibleBounds.after) else {
             return
+        }
+        
+        if forceReload {
+            while let managedView = managedViews.popLast() {
+                managedView.removeFromSuperview()
+            }
         }
         
         //Пройти по имеющимся, сравнить их индексы с индексами текущего видимого окна
